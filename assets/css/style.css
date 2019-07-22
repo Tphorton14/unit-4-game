@@ -19,6 +19,12 @@ body {
     border: 3px solid green;
 }
 
+.charactorNames {
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 0px;
+}
+
 .kylo {
     height: 88.78px;
 }
