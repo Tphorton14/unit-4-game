@@ -1,12 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
     margin-left: 0px;
 }
 .card {
     display: inline-block;
     font-size: 10px;
+    border: 3px solid green;
 }
 
 .kylo {
     height: 88.78px;
+}
+
+.name {
+    font-size: 15px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.photo {
+  display: block;
+  margin-top: 35px;
+  
 }
 
