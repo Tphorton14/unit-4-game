@@ -24,7 +24,7 @@
 
     <container>
         <div class="container playerPick">
-            <div class="card obi" style="width: 10rem; height: 10rem;">
+            <div id="obi" class="card obi players" style="width: 10rem; height: 10rem;">
                 <div class="charactorNames">
                     <p>Obiwan</p>
                 </div>
@@ -36,7 +36,7 @@
 
                 </div>
             </div>
-            <div class="card rey" style="width: 10rem; height: 10rem;">
+            <div id="rey" class="card rey players" style="width: 10rem; height: 10rem;">
                 <div class="charactorNames">
                     <p>Rey</p>
                 </div>
@@ -48,8 +48,8 @@
 
                 </div>
             </div>
-            <div class="card vadar" style="width: 10rem; height: 10rem;">
-                <div class="charactorNames">
+            <div id="vadar" class="card vadar players" style="width: 10rem; height: 10rem;">
+                <div class="charactorNames" i>
                     <p>Darth Vadar </p>
                 </div>
                 <img src="https://freeaddon.com/wp-content/uploads/2017/10/star-wars-characters-9.jpg"
@@ -60,7 +60,7 @@
 
                 </div>
             </div>
-            <div class="card kylo" style="width: 10rem; height: 10rem;">
+            <div id="kylo" class="card kylo players" style="width: 10rem; height: 10rem;">
                 <div class="charactorNames">
                     <p>Kylo Ryen</p>
                 </div>
@@ -73,11 +73,12 @@
                 </div>
             </div>
 
-        </div>
+        
 
         <div>
-            <h3 class="color">Your Character</h3>
+            <h3 id="myCharactor" class="color">Your Character</h3>
         </div>
+
         <div>
             <h3 class="color">Enemies Avalible to Attack</h3>
         </div>
@@ -97,7 +98,7 @@
             <button>Reset Game</button>
         </div>
 
-
+        </div>
     </container>
 
     <script src="assets/js/game.js"></script>

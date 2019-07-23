@@ -1,5 +1,6 @@
 
 //Declare global objects 
+
 let attack;
 let defense;
 let attackCharater;
@@ -7,6 +8,7 @@ let attackerHealth;
 let defenseCharactor;
 let defenderHealth;
 let name;
+let yourCharacter;
 let myPlayer = "";
 let myDef = "";
 
@@ -21,21 +23,21 @@ const character = {
         attackPower: 8,
         counterAttack: 24
         
-    };
+    },
 
     Rey: {
         name: "Rey",
         hP: 100,
         attackPower: 10,
         counterAttack: 5
-    };
+    },
 
     darthVadar: {
         name: "DarthVadar",
         hP: 150,
         attackPower: 10,
         counterAttack: 25
-    };
+    },
 
     kyloRyen: {
         name: "KyloRyen",
@@ -44,6 +46,7 @@ const character = {
         counterAttack: 25
     }
 }
+
 
 function reset () {
 
@@ -55,7 +58,20 @@ function reset () {
 
 
 
-//
+// choose (by cicking) character
+$(".players").click(function(){
+
+    if (myPlayer === "") {
+        console.log(this);
+        $(this).appendTo("#myCharactor");
+        myPlayer = $(this);
+        yourCharacter = $(myPlayer).attr("value");
+    }
+//     
+// move non-clicked characters to ___ container
+// 
+
+})
 
 
 $(document).on("click", function () {

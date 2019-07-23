@@ -9,9 +9,15 @@ body {
 * {
     box-sizing: border-box;
 }
-
+.head {
+    width: 960px;
+    margin: 0 auto;
+    padding: 5px 40px 20px 40px;
+}
 .container {
-    margin-left: 0px;
+    width: 960px;
+    margin: 0 auto;
+    padding: 5px 40px 20px 40px;
 }
 .card {
     display: inline-block;
