@@ -10,6 +10,7 @@ let defenseCharactor;
 let defenderHealth;
 let name;
 let yourCharacter;
+let badCharacter;
 let myPlayer = "";
 let myDef = "";
 
@@ -78,7 +79,6 @@ $(".players").click(function () {
     else {
         $(".players").not(myPlayer).appendTo("#enemy", [i]);
     }
-    
 
     if (yourCharacter == character.ObiWan.name) {
         attackerHealth = character.ObiWan.hp;
@@ -104,5 +104,16 @@ $(".players").click(function () {
    
 
 
+
+});
+
+$("#enemy").click(function(){
+    if (myDef == "") {
+        $(this).appendTo("#bad");
+        myDef = $(this);
+        badCharacter = $(myDef).attr("value");
+
+    }
+    
 
 });
