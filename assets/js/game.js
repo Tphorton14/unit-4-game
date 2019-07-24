@@ -69,10 +69,11 @@ $(".players").click(function () {
 
     if (myPlayer == "") {
         console.log(this);
-        $(this).appendTo("#myCharactor");
+        $(this).appendTo("#myCharacter");
         myPlayer = $(this);
         yourCharacter = $(myPlayer).attr("value");
     }
+    
 
     if (yourCharacter == character.ObiWan.name) {
         attackerHealth = character.ObiWan.hp;
@@ -95,11 +96,11 @@ $(".players").click(function () {
         aPower = character.dkyloRyen.aPower;
         attack = characters.kyloRyen;
     }
-            // move non-clicked characters to ___ container
-            //   
-            for (var i = 0; i < 4; i++) {
-            $(".players" + [i]).not(myPlayer).appendTo("#enemy" + [i]);
-            }
+    // move non-clicked characters to ___ container
+    //   
+    for (let i = 0; i < 4; i++) {
+        $(".players" + [i]).not(myPlayer).appendToChild("#enemy" + [i]);
+    }
 
 
 
