@@ -67,11 +67,16 @@ $("restartBtn").on("click", function () {
 // choose (by cicking) character
 $(".players").click(function () {
 
+    for (let i = 0; i < 4; i++)
+
     if (myPlayer == "") {
         console.log(this);
         $(this).appendTo("#myCharacter");
         myPlayer = $(this);
         yourCharacter = $(myPlayer).attr("value");
+    }
+    else {
+        $(".players").not(myPlayer).appendTo("#enemy", [i]);
     }
     
 
@@ -96,11 +101,7 @@ $(".players").click(function () {
         aPower = character.dkyloRyen.aPower;
         attack = characters.kyloRyen;
     }
-    // move non-clicked characters to ___ container
-    //   
-    for (let i = 0; i < 4; i++) {
-        $(".players" + [i]).not(myPlayer).appendToChild("#enemy" + [i]);
-    }
+   
 
 
 
