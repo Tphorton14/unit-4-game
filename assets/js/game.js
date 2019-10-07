@@ -71,8 +71,8 @@ $(".players").click(function () {
     for (let i = 0; i < 4; i++)
 
     if (myPlayer == "") {
-        console.log(this);
         $(this).appendTo("#myCharacter");
+        console.log(this.data-name);
         myPlayer = $(this);
         yourCharacter = $(myPlayer).attr("value");
     }
@@ -111,7 +111,9 @@ $("#enemy").click(function(){
     if (myDef == "") {
         $(this).appendTo("#bad");
         myDef = $(this);
+        console.log(this);
         badCharacter = $(myDef).attr("value");
+
 
     }
     
