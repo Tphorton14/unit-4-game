@@ -1,25 +1,28 @@
+$(document).ready(function() { 
+
+
 
 //Declare global objects 
 
-let attack;
-let defense;
-let power;
-let attackCharater;
-let attackerHealth;
-let defenseCharactor;
-let defenderHealth;
-let name;
-let yourCharacter;
-let badCharacter;
-let myPlayer = "";
-let myDef = "";
+// let attack;
+// let defense;
+// let power;
+// let attackCharater;
+// let attackerHealth;
+// let defenseCharactor;
+// let defenderHealth;
+// let name;
+// let yourCharacter;
+// let badCharacter;
+// let myPlayer = "";
+// let myDef = "";
 
 
 
 
 
 const character = {
-    ObiWan: {
+    "ObiWan": {
         name: "Obiwan",
         hP: 120,
         aPower: 8,
@@ -27,27 +30,45 @@ const character = {
 
     },
 
-    Rey: {
+    "Rey": {
         name: "Rey",
         hP: 100,
         aPower: 10,
         counterAttack: 5
     },
 
-    darthVadar: {
+    "darthVadar": {
         name: "DarthVadar",
         hP: 150,
         aPower: 10,
         counterAttack: 25
     },
 
-    kyloRyen: {
+    "kyloRyen": {
         name: "KyloRyen",
         hP: 180,
         aPower: 12,
         counterAttack: 25
     }
-}
+};
+
+let attacker;
+let combatants = [];
+let defender;
+let turnCounter = 1;
+let killCout = 0;
+
+let renderCharacter = function(character, renderArea) {
+    let charDiv = $("<div class'character' data-name=' " + character.name + "'>");
+    let charName = $("<div class='character-name'>").text(character.name);
+                                                                                // need to take out hardcode and put image into JS file
+    let charImage = $("<img alt-'image' class='character-image'>").attr("src", character.imageURL);
+    let charHealth = $("<div class='character-health'>").text(character.health);
+    charDiv.append(charName).append(charImage).append(charHealth);
+    $(renderArea).append(charDiv);
+};
+
+
 
 
 $("restartBtn").on("click", function () {
@@ -117,5 +138,7 @@ $("#enemy").click(function(){
 
     }
     
+
+});
 
 });
