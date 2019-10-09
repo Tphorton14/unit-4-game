@@ -76,6 +76,25 @@ let initializeGame = function () {
 
 initializeGame();
 
+let updateCharacter = function (charObj, areaRender) {
+    $(areaRender).empty();
+    renderCharacter(charObj, areaRender);
+};
+
+let renderEnemies = function (enemyArr) {
+    for (let i = 0; i < enemyArr.length; i++) {
+        renderCharacter(enemyArr[i], "#avaliable-to-attack-section");
+    }
+};
+
+let renderMessage = function(message) {
+    let gameMessageSet = $("#game-message");
+    let newMessage = $("div").text(message);
+    gameMessageSet.append(newMessage);
+}
+
+
+
 
 $("restartBtn").on("click", function () {
     // Restart the program whenever the user clicks the mouse
