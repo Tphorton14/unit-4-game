@@ -93,7 +93,22 @@ let renderMessage = function(message) {
     gameMessageSet.append(newMessage);
 }
 
+let restartGame = function (resultMessage) {
+    let restart = $("<button>Restart</button>").click(function() {
+        location.reload();
+    });
 
+    let gameState = $("<div>").text(resultMessage);
+
+    $("body").append(gameState);
+    $("body").append(restart);
+};
+
+let clearMessage = function () {
+    let gameMessage = $("#game-message");
+
+    gameMessage.text("");
+};
 
 
 $("restartBtn").on("click", function () {
