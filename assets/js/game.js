@@ -68,7 +68,13 @@ let renderCharacter = function(character, renderArea) {
     $(renderArea).append(charDiv);
 };
 
+let initializeGame = function () {
+    for (let ket in characters) {
+        renderCharacter(characters[key], "#characters-selection");
+    }
+};
 
+initializeGame();
 
 
 $("restartBtn").on("click", function () {
