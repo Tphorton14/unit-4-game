@@ -21,34 +21,38 @@ $(document).ready(function() {
 
 
 
-const character = {
+var character = {
     "ObiWan": {
         name: "Obiwan",
-        hP: 120,
-        aPower: 8,
-        counterAttack: 24
+        health: 120,
+        attack: 8,
+        imageUrl: "assets/img/obi-wan.jpg",
+        enemyAttackBack: 24
 
     },
 
     "Rey": {
         name: "Rey",
-        hP: 100,
-        aPower: 10,
-        counterAttack: 5
+        health: 100,
+        attack: 10,
+        imageUrl: "assets/img/Daisy-Ridley.jpg",
+        enemyAttackBack: 5
     },
 
     "darthVadar": {
-        name: "DarthVadar",
-        hP: 150,
-        aPower: 10,
-        counterAttack: 25
+        name: "Darth Vadar",
+        health: 150,
+        attack: 10,
+        imageUrl: "assets/img/darth-vader.jpg",
+        enemyAttackBack: 25
     },
 
     "kyloRyen": {
-        name: "KyloRyen",
-        hP: 180,
-        aPower: 12,
-        counterAttack: 25
+        name: "Kylo Ryen",
+        health: 180,
+        attack: 12,
+        imageUrl: "assets/img/kylo-ren.jpeg",
+        enemyAttackBack: 25
     }
 };
 
@@ -56,7 +60,7 @@ let attacker;
 let combatants = [];
 let defender;
 let turnCounter = 1;
-let killCout = 0;
+let killCount = 0;
 
 let renderCharacter = function(character, renderArea) {
     let charDiv = $("<div class'character' data-name=' " + character.name + "'>");
@@ -69,8 +73,8 @@ let renderCharacter = function(character, renderArea) {
 };
 
 let initializeGame = function () {
-    for (let ket in characters) {
-        renderCharacter(characters[key], "#characters-selection");
+    for (let key in character) {
+        renderCharacter(character[key], "#characters-section");
     }
 };
 
@@ -110,10 +114,93 @@ let clearMessage = function () {
     gameMessage.text("");
 };
 
+$("characters-section").on("click", ".character", function () {
+    let name = $(this).attr("data-name");
 
-$("restartBtn").on("click", function () {
-    // Restart the program whenever the user clicks the mouse
-    document.restart();
+    if(!attacker){
+        attacker = character[name];
+
+        for (let key in character){
+            if (key !== name) {
+                combatants.push(character[key]);
+            }
+        }
+
+        $("#characters-section").hide();
+
+        updateCharacter(attacker, "#selected-character");
+        renderEnemies(combatants);
+    }
+});
+
+
+$("#available-to-attack-section").on("click", ".character", function(){
+
+    let name = $(this).attr("data-name");
+
+    if($("#defender").children().length === 0){
+        defender = character[name];
+        updateCharacter(defender, "#defender");
+
+        $(this).remove();
+        clearMessage();
+    }
+});
+
+$("#attack-button").on("click", function() {
+    if($("#defender").children().length !== 0) {
+        let attackMessage = "You Attacked " + defender.name  + " for " + attacker.attack * turnCounter + " damage.";
+        let counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
+        clearMessage();
+
+        defender.health -+ attacker.attack * turnCounter;
+
+        if (defender.health > 0) {
+            updateCharacter(defender, "#defender");
+
+            renderMessage(attackMessage);
+            renderMessage(counterAttackMessage);
+
+            attacker.health -= defender.enemyAttackBack;
+
+            updateCharacter(attacker, "#selected-character");
+
+            if (attacker.health <= 0) {
+                clearMessage();
+                restartGame("LOSER, you have lost!");
+                $("#attack-button").off("click");
+            }
+        } else {
+            $("#defender").empty();
+
+            let gameStateMessage = "You have defeated " + defender.name + ", please choose another enemy.";
+            renderMessage(gameStateMessage);
+
+            killCount++;
+
+            if (killCount >= combatants.length) {
+                clearMessage();
+                $("#attack-button").off("click");
+                restartGame("Congrats, you have WON!");
+            }
+        }
+
+        turnCounter++;
+    } else {
+        clearMessage();
+        renderMessage ("No more enemies to fight here.");
+    }
+});
+
+
+
+
+
+
+
+// $("restartBtn").on("click", function () {
+//     // Restart the program whenever the user clicks the mouse
+//     document.restart();
 
 
 
@@ -127,58 +214,58 @@ $("restartBtn").on("click", function () {
 
 // });
 // choose (by cicking) character
-$(".players").click(function () {
+// $(".players").click(function () {
 
-    for (let i = 0; i < 4; i++)
+//     for (let i = 0; i < 4; i++)
 
-    if (myPlayer == "") {
-        $(this).appendTo("#myCharacter");
-        console.log(this.data-name);
-        myPlayer = $(this);
-        yourCharacter = $(myPlayer).attr("value");
-    }
-    else {
-        $(".players").not(myPlayer).appendTo("#enemy", [i]);
-    }
+//     if (myPlayer == "") {
+//         $(this).appendTo("#myCharacter");
+//         console.log(this.data-name);
+//         myPlayer = $(this);
+//         yourCharacter = $(myPlayer).attr("value");
+//     }
+//     else {
+//         $(".players").not(myPlayer).appendTo("#enemy", [i]);
+//     }
 
-    if (yourCharacter == character.ObiWan.name) {
-        attackerHealth = character.ObiWan.hp;
-        aPower = character.ObiWan.aPower;
-        attack = characters.ObiWan;
-    }
+//     if (yourCharacter == character.ObiWan.name) {
+//         attackerHealth = character.ObiWan.hp;
+//         aPower = character.ObiWan.aPower;
+//         attack = characters.ObiWan;
+//     }
 
-    else if (yourCharacter == character.Rey.name) {
-        attackerHealth = character.Rey.hp;
-        aPower = character.Rey.aPower;
-        attack = characters.Rey;
-    }
-    else if (yourCharacter == character.darthVadar.name) {
-        attackerHealth = character.darthVadar.hp;
-        aPower = character.darthVadar.aPower;
-        attack = characters.darthVadar;
-    }
-    else if (yourCharacter == character.kyloRyen.name) {
-        attackerHealth = character.kyloRyen.hp;
-        aPower = character.dkyloRyen.aPower;
-        attack = characters.kyloRyen;
-    }
+//     else if (yourCharacter == character.Rey.name) {
+//         attackerHealth = character.Rey.hp;
+//         aPower = character.Rey.aPower;
+//         attack = characters.Rey;
+//     }
+//     else if (yourCharacter == character.darthVadar.name) {
+//         attackerHealth = character.darthVadar.hp;
+//         aPower = character.darthVadar.aPower;
+//         attack = characters.darthVadar;
+//     }
+//     else if (yourCharacter == character.kyloRyen.name) {
+//         attackerHealth = character.kyloRyen.hp;
+//         aPower = character.dkyloRyen.aPower;
+//         attack = characters.kyloRyen;
+//     }
    
 
 
 
-});
+// });
 
-$("#enemy").click(function(){
-    if (myDef == "") {
-        $(this).appendTo("#bad");
-        myDef = $(this);
-        console.log(this);
-        badCharacter = $(myDef).attr("value");
+// $("#enemy").click(function(){
+//     if (myDef == "") {
+//         $(this).appendTo("#bad");
+//         myDef = $(this);
+//         console.log(this);
+//         badCharacter = $(myDef).attr("value");
 
 
-    }
+//     }
     
 
-});
+// });
 
-});
+// });

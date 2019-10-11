@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=<device-width>, initial-scale=1.0"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Wars Game</title>
 
@@ -11,111 +11,51 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
 
+        <div class="main-section-title">Star Wars RPG!</div>
+		<div id="main-game-section">
+			<!-- Where the characters are initially available to be selected. -->
+			<div id="characters-section">
+				<div class="section-title">Select Your Character</div>
+			</div>
+			
+			<!-- Section for our selected character. -->
+			<div id="selected-character-section">
+				<div class="section-title">Your Character</div>
+				<!-- Where our selected character will appear. -->
+				<div id="selected-character"></div>
+			</div>
+
+			<!-- Where our enemies available to attack will appear. -->
+			<div id="available-to-attack-section">
+				<div class="section-title">Enemies Available To Attack</div>
+			</div>
+
+			<div class="section-title">Fight Section</div>
+			<div id="fight-section">
+				<button id="attack-button">Attack</button>
+			</div>
+
+			<div id="action">
+				<div class="character-section">
+					<div class="section-title">Defender</div>
+					<!-- Where our defender will appear. -->
+					<div id="defender"></div>
+				</div>
+			</div>
+
+		</div>
+		<!-- Area for game messages. -->
+		<div id="game-message"></div>
 
 
-    <Header>
-        <h1 class="color head"> Stars Wars RPG </h1>
-    </Header>
+    <script type="text/javascript" src="assets/js/game.js"></script>
 
-    <container>
-        <div class="container playerPick">
-            <div id="obi" class="card obi players" style="width: 10rem; height: 10rem;">
-                <div class="charactorNames">
-                    <p>Obiwan</p>
-                </div>
-                <img src="https://freeaddon.com/wp-content/uploads/2017/10/star-wars-characters-5.jpg"
-                    class="card-img-top photo" alt="Obi-wan">
-                <div class="card-body">
-                    <h5 class="card-title name"></h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div>
-            <div id="rey" class="card rey players" data-name="rey" style="width: 10rem; height: 10rem;">
-                <div class="charactorNames">
-                    <p>Rey</p>
-                </div>
-                <img src="https://specials-images.forbesimg.com/imageserve/5d32030cf1176b000897148c/960x0.jpg?cropX1=0&cropX2=1322&cropY1=0&cropY2=744"
-                    class="card-img-top photo" alt="Rey">
-                <div class="card-body">
-                    <h5 class="card-title name"></h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div>
-            <div id="vadar" class="card vadar players" style="width: 10rem; height: 10rem;">
-                <div class="charactorNames">
-                    <p>Darth Vadar </p>
-                </div>
-                <img src="https://freeaddon.com/wp-content/uploads/2017/10/star-wars-characters-9.jpg"
-                    class="card-img-top vadarphoto" alt="Vadar">
-                <div class="card-body">
-                    <h5 class="card-title name"></h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div>
-            <div id="kylo" class="card kylo players" style="width: 10rem; height: 10rem;">
-                <div class="charactorNames">
-                    <p>Kylo Ryen</p>
-                </div>
-                <img src="https://amp.businessinsider.com/images/5afdcb646e8bbd70038b4ef8-750-563.jpg"
-                    class="card-img-top kylo photo" alt="Kylo">
-                <div class="card-body">
-                    <h5 class="card-title name"></h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div>
-
-
-
-            <div id="myCharacter">
-                <div>
-                    <h3 class="color">Your Character</h3>
-                </div>
-
-            </div>
-
-            <div id="enemy">
-                <div>
-                    <h3 class="color">Enemies Avalible to Attack</h3>
-                </div>
-                
-
-            </div>
-
-            <div>
-                <div>
-                    <h3 class="color">Fight Selection</h3>
-                </div>
-            </div>
-
-            <div class="fight-btn btn">
-                <button>Attack</button>
-            </div>
-        <div id="bad">
-            <div>
-                <h3 class="color">Defender</h3>
-            </div>
-        </div>
-            <div id="resetButton btn">
-                <button>Reset Game</button>
-            </div>
-
-        </div>
-    </container>
-
-    <script src="assets/js/game.js"></script>
-
-    <footer>
-
-    </footer>
 </body>
 
 </html>
