@@ -21,12 +21,12 @@ $(document).ready(function() {
 
 
 
-var character = {
+let characters = {
     "ObiWan": {
         name: "Obiwan",
         health: 120,
         attack: 8,
-        imageUrl: "assets/img/obi-wan.jpg",
+        imageUrl: "../image/obi-wan.jpg",
         enemyAttackBack: 24
 
     },
@@ -35,7 +35,7 @@ var character = {
         name: "Rey",
         health: 100,
         attack: 10,
-        imageUrl: "assets/img/Daisy-Ridley.jpg",
+        imageUrl: "../image/Daisy-Ridley.jpg",
         enemyAttackBack: 5
     },
 
@@ -43,7 +43,7 @@ var character = {
         name: "Darth Vadar",
         health: 150,
         attack: 10,
-        imageUrl: "assets/img/darth-vader.jpg",
+        imageUrl: "../image/darth-vader.jpg",
         enemyAttackBack: 25
     },
 
@@ -51,7 +51,7 @@ var character = {
         name: "Kylo Ryen",
         health: 180,
         attack: 12,
-        imageUrl: "assets/img/kylo-ren.jpeg",
+        imageUrl: "../image/kylo-ren.jpeg",
         enemyAttackBack: 25
     }
 };
@@ -62,42 +62,42 @@ let defender;
 let turnCounter = 1;
 let killCount = 0;
 
-let renderCharacter = function(character, renderArea) {
-    let charDiv = $("<div class'character' data-name=' " + character.name + "'>");
-    let charName = $("<div class='character-name'>").text(character.name);
+let renderCharacter = function(characters, renderArea) {
+    let charDiv = $("<div class='character' data-name='" + characters.name + "'>");
+    let charName = $("<div class='character-name'>").text(characters.name);
                                                                                 // need to take out hardcode and put image into JS file
-    let charImage = $("<img alt-'image' class='character-image'>").attr("src", character.imageURL);
-    let charHealth = $("<div class='character-health'>").text(character.health);
+    let charImage = $("<img class='character-image'>").attr("src", characters.imageURL);
+    let charHealth = $("<div class='character-health'>").text(characters.health);
     charDiv.append(charName).append(charImage).append(charHealth);
     $(renderArea).append(charDiv);
 };
 
-let initializeGame = function () {
-    for (let key in character) {
-        renderCharacter(character[key], "#characters-section");
+var initializeGame = function () {
+    for (let key in characters) {
+        renderCharacter(characters[key], "#characters-section");
     }
 };
 
 initializeGame();
 
-let updateCharacter = function (charObj, areaRender) {
+var updateCharacter = function (charObj, areaRender) {
     $(areaRender).empty();
     renderCharacter(charObj, areaRender);
 };
 
-let renderEnemies = function (enemyArr) {
+var renderEnemies = function (enemyArr) {
     for (let i = 0; i < enemyArr.length; i++) {
-        renderCharacter(enemyArr[i], "#avaliable-to-attack-section");
+        renderCharacter(enemyArr[i], "#available-to-attack-section");
     }
 };
 
-let renderMessage = function(message) {
+var renderMessage = function(message) {
     let gameMessageSet = $("#game-message");
     let newMessage = $("div").text(message);
     gameMessageSet.append(newMessage);
 }
 
-let restartGame = function (resultMessage) {
+var restartGame = function (resultMessage) {
     let restart = $("<button>Restart</button>").click(function() {
         location.reload();
     });
@@ -108,21 +108,21 @@ let restartGame = function (resultMessage) {
     $("body").append(restart);
 };
 
-let clearMessage = function () {
+var clearMessage = function () {
     let gameMessage = $("#game-message");
 
     gameMessage.text("");
 };
 
-$("characters-section").on("click", ".character", function () {
+$("#characters-section").on("click", ".character", function () {
     let name = $(this).attr("data-name");
 
     if(!attacker){
-        attacker = character[name];
+        attacker = characters[name];
 
-        for (let key in character){
+        for (let key in characters){
             if (key !== name) {
-                combatants.push(character[key]);
+                combatants.push(characters[key]);
             }
         }
 
@@ -139,7 +139,7 @@ $("#available-to-attack-section").on("click", ".character", function(){
     let name = $(this).attr("data-name");
 
     if($("#defender").children().length === 0){
-        defender = character[name];
+        defender = characters[name];
         updateCharacter(defender, "#defender");
 
         $(this).remove();
@@ -194,78 +194,4 @@ $("#attack-button").on("click", function() {
 
 
 
-
-
-
-
-// $("restartBtn").on("click", function () {
-//     // Restart the program whenever the user clicks the mouse
-//     document.restart();
-
-
-
-
 });
-
-
-
-// $(document).ready(function () {
-//     reset();
-
-// });
-// choose (by cicking) character
-// $(".players").click(function () {
-
-//     for (let i = 0; i < 4; i++)
-
-//     if (myPlayer == "") {
-//         $(this).appendTo("#myCharacter");
-//         console.log(this.data-name);
-//         myPlayer = $(this);
-//         yourCharacter = $(myPlayer).attr("value");
-//     }
-//     else {
-//         $(".players").not(myPlayer).appendTo("#enemy", [i]);
-//     }
-
-//     if (yourCharacter == character.ObiWan.name) {
-//         attackerHealth = character.ObiWan.hp;
-//         aPower = character.ObiWan.aPower;
-//         attack = characters.ObiWan;
-//     }
-
-//     else if (yourCharacter == character.Rey.name) {
-//         attackerHealth = character.Rey.hp;
-//         aPower = character.Rey.aPower;
-//         attack = characters.Rey;
-//     }
-//     else if (yourCharacter == character.darthVadar.name) {
-//         attackerHealth = character.darthVadar.hp;
-//         aPower = character.darthVadar.aPower;
-//         attack = characters.darthVadar;
-//     }
-//     else if (yourCharacter == character.kyloRyen.name) {
-//         attackerHealth = character.kyloRyen.hp;
-//         aPower = character.dkyloRyen.aPower;
-//         attack = characters.kyloRyen;
-//     }
-   
-
-
-
-// });
-
-// $("#enemy").click(function(){
-//     if (myDef == "") {
-//         $(this).appendTo("#bad");
-//         myDef = $(this);
-//         console.log(this);
-//         badCharacter = $(myDef).attr("value");
-
-
-//     }
-    
-
-// });
-
-// });

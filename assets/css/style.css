@@ -1,5 +1,6 @@
  body {
-	background-image: url("../img/bG.jpg");
+  font-family: "Share Tech Mono", Arial, Helvetica, sans-serif;
+	background-image: url("../image/bG.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 
@@ -171,9 +172,7 @@ h1 {
   #turn-counter {
     font-size: 150%;
   }
-/* button:hover {
-    background: red;
-} */
+
 
 
 
