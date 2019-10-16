@@ -6,61 +6,7 @@
 
 
 }
-/*
-.players{
-    background: black;
-}
-* {
-    box-sizing: border-box;
-}
-.head {
-    width: 960px;
-    margin: 0 auto;
-    padding: 5px 40px 20px 40px;
-}
-.container {
-    width: 960px;
-    margin: 0 auto;
-    padding: 5px 40px 20px 40px;
-}
-.card {
-    display: inline-block;
-    font-size: 10px;
-    border: 3px solid green;
-    color: white;
-    display: center;
-}
 
-.charactorNames {
-    text-align: center;
-    font-size: 15px;
-    padding-bottom: 0px;
-}
-
-.kylo {
-    height: 88.78px;
-}
-
-.name {
-    text-align: center;
-    padding-bottom: 40px;
-    color: black;
-}
-
-.photo {
-  /* display: block; */
-  /* margin-top: 0px;
-  
-} */
-
-/* .color {
-    color: white;
-}
-
-h3,
-h1 {
-    text-align: center;
-} */ 
 
  .character {
     display: inline-block;
