@@ -50,7 +50,7 @@ let renderCharacter = function(character, renderArea) {
 };
 
 let initializeGame = function() {
-    for (var key in characters) {
+    for (let key in characters) {
       renderCharacter(characters[key], "#characters-section");
     }
   };
@@ -93,15 +93,6 @@ let restartGame = function(resultMessage) {
   };
 
 
-
-
-
-
-
-
-
-
-
 $("#characters-section").on("click", ".character", function() {
     let name = $(this).attr("data-name");
     if (!attacker) {
@@ -130,8 +121,8 @@ $("#characters-section").on("click", ".character", function() {
 
   $("#attack-button").on("click", function() {
     if ($("#defender").children().length !== 0) {
-      var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
-      var counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
+      let attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
+      let counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
       clearMessage();
       defender.health -= attacker.attack * turnCounter;
       if (defender.health > 0) {
@@ -149,7 +140,7 @@ $("#characters-section").on("click", ".character", function() {
       else {
         $("#defender").empty();
 
-        var gameStateMessage = "You have defeated " + defender.name + ", you can choose to fight another enemy.";
+        let gameStateMessage = "You have defeated " + defender.name + ", you can choose to fight another enemy.";
         renderMessage(gameStateMessage);
         killCount++;
         if (killCount >= combatants.length) {
